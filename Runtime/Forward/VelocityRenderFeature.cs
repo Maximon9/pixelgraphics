@@ -33,13 +33,9 @@ namespace Aarthificial.PixelGraphics.Forward
             _pass = new VelocityRenderPass(_emitterMaterial, _blitMaterial);
         }
 
-        public override void SetupRenderPasses(ScriptableRenderer renderer, in RenderingData renderingData)
-        {
-            _pass.ConfigureTarget(renderer.cameraColorTarget);
-        }
-
         public override void AddRenderPasses(ScriptableRenderer renderer, ref RenderingData renderingData)
         {
+            _pass.ConfigureTarget(renderer.cameraColorTarget);
             _pass.Setup(settings, simulation);
             renderer.EnqueuePass(_pass);
         }
